@@ -5,7 +5,7 @@ require 'weather/report/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "weather-report"
-  spec.version       = Weather::Report::VERSION
+  spec.version       = WeatherReport::VERSION
   spec.authors       = ["zakuni"]
   spec.email         = ["kunio038@gmail.com"]
   spec.description   = %q{A Ruby library and CLI to access Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).}

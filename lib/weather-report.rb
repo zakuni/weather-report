@@ -1,7 +1,5 @@
 require "weather-report/version"
 
-module Weather
-  module Report
-    # Your code goes here...
-  end
+module WeatherReport
+  # Your code goes here...
 end

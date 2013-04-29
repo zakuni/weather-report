@@ -1,5 +1,3 @@
-module Weather
-  module Report
-    VERSION = "0.0.1"
-  end
+module WeatherReport
+  VERSION = "0.0.1"
 end
