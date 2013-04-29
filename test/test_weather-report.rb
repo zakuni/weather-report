@@ -19,13 +19,26 @@ class TestWeatherReport < MiniTest::Unit::TestCase
 
   def test_today
     assert_respond_to @weather, :today
+
+    today = @weather.today
+    assert_includes(today, "date")
+    assert_includes(today, "telop")
+    assert_includes(today, "temperature")
   end
 
   def test_tomorrow
     assert_respond_to @weather, :tomorrow
+    tomorrow = @weather.tomorrow
+    assert_includes(tomorrow, "date")
+    assert_includes(tomorrow, "telop")
+    assert_includes(tomorrow, "temperature")
   end
 
   def test_day_after_tomorrow
     assert_respond_to @weather, :day_after_tomorrow
+    day_after_tomorrow = @weather.day_after_tomorrow
+    assert_includes(day_after_tomorrow, "date")
+    assert_includes(day_after_tomorrow, "telop")
+    assert_includes(day_after_tomorrow, "temperature")
   end
 end
