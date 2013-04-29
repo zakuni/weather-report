@@ -1,6 +1,6 @@
-# Weather::Report
+# Weather Report
 
-TODO: Write a gem description
+A Ruby library and CLI to access Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).
 
 ## Installation
 
