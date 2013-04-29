@@ -1,5 +1,8 @@
+require 'json'
+require 'open-uri'
 require "weather-report/version"
 
 module WeatherReport
-  # Your code goes here...
+  class Weather
+  end
 end
