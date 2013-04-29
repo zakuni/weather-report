@@ -10,6 +10,5 @@ class TestWeatherReport < MiniTest::Unit::TestCase
       Weather.new
     end
     assert_instance_of Weather, Weather.new(130010)
-    puts Weather.new(130010).report
   end
 end
