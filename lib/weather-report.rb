@@ -1,4 +1,4 @@
-require "weather/report/version"
+require "weather-report/version"
 
 module Weather
   module Report
