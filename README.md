@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'weather-report'
+
+id = WeatherReport::Weather.request_cityid("東京")
+weather = WeatherReport::Weather.new(id)
+```
 
 ## Contributing
 
