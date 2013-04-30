@@ -9,7 +9,8 @@ module WeatherReport
     attr_reader :today, :tomorrow, :day_after_tomorrow
 
     def initialize(city)
-      @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{city}")
+      id = request_cityid(city)
+      @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{id}")
     end
 
     def request_cityid(city)
