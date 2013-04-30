@@ -6,15 +6,14 @@ class TestWeatherReport < MiniTest::Unit::TestCase
   include WeatherReport
 
   def setup
-    # 130010は東京
-    @weather = Weather.new(130010)
+    @weather = Weather.new("東京")
   end
 
   def test_initialize
     assert_raises ArgumentError do
       Weather.new
     end
-    assert_instance_of Weather, Weather.new(130010)
+    assert_instance_of Weather, Weather.new("東京")
   end
 
   def test_today
