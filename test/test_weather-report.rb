@@ -6,14 +6,15 @@ class TestWeatherReport < MiniTest::Unit::TestCase
   include WeatherReport
 
   def setup
-    @weather = Weather.new("東京")
+    @id = Weather.request_cityid("東京")
+    @weather = Weather.new(@id)
   end
 
   def test_initialize
     assert_raises ArgumentError do
       Weather.new
     end
-    assert_instance_of Weather, Weather.new("東京")
+    assert_instance_of Weather, Weather.new(@id)
   end
 
   def test_today
@@ -44,8 +45,8 @@ class TestWeatherReport < MiniTest::Unit::TestCase
   end
 
   def test_request_cityid
-    assert_respond_to @weather, :request_cityid
-    assert_equal "130010", @weather.request_cityid("東京")
-    assert_equal "140010", @weather.request_cityid("横浜")
+    assert_respond_to Weather, :request_cityid
+    assert_equal "130010", Weather.request_cityid("東京")
+    assert_equal "140010", Weather.request_cityid("横浜")
   end
 end

@@ -8,12 +8,11 @@ module WeatherReport
   class Weather
     attr_reader :today, :tomorrow, :day_after_tomorrow
 
-    def initialize(city)
-      id = request_cityid(city)
-      @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{id}")
+    def initialize(city_id)
+      @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{city_id}")
     end
 
-    def request_cityid(city)
+    def self.request_cityid(city)
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
       doc.search("//city[@title='#{city}']").attr("id").value
     end
