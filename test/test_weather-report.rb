@@ -28,6 +28,7 @@ class TestWeatherReport < MiniTest::Unit::TestCase
 
   def test_tomorrow
     assert_respond_to @weather, :tomorrow
+
     tomorrow = @weather.tomorrow
     assert_includes(tomorrow, "date")
     assert_includes(tomorrow, "telop")
@@ -36,9 +37,16 @@ class TestWeatherReport < MiniTest::Unit::TestCase
 
   def test_day_after_tomorrow
     assert_respond_to @weather, :day_after_tomorrow
+
     day_after_tomorrow = @weather.day_after_tomorrow
     assert_includes(day_after_tomorrow, "date")
     assert_includes(day_after_tomorrow, "telop")
     assert_includes(day_after_tomorrow, "temperature")
+  end
+
+  def test_request_cityid
+    assert_respond_to @weather, :request_cityid
+    assert_equal "130010", @weather.request_cityid("東京")
+    assert_equal "140010", @weather.request_cityid("横浜")
   end
 end

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'json'
 require 'open-uri'
+require 'nokogiri'
 require "weather-report/version"
 
 module WeatherReport
@@ -9,6 +10,11 @@ module WeatherReport
 
     def initialize(city)
       @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{city}")
+    end
+
+    def request_cityid(city)
+      doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
+      doc.search("//city[@title='#{city}']").attr("id").value
     end
 
     def today
