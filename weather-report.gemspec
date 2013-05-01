@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = WeatherReport::VERSION
   spec.authors       = ["zakuni"]
   spec.email         = ["kunio038@gmail.com"]
-  spec.description   = %q{A Ruby library and CLI to access Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).}
+  spec.description   = %q{A Ruby library and CLI to get Japanese Weather via Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).}
   spec.summary       = %q{A Ruby client of Livedoor Weather Web Service.}
   spec.homepage      = "https://github.com/zakuni/weather-report"
   spec.license       = "MIT"

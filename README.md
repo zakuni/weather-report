@@ -1,6 +1,6 @@
 # Weather Report
 
-A Ruby library and CLI to access Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).
+A Ruby library and CLI to get Japanese Weather via Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).
 
 ## Installation
 
@@ -23,6 +23,7 @@ require 'weather-report'
 
 id = WeatherReport::Weather.request_cityid("東京")
 weather = WeatherReport::Weather.new(id)
+weather.today["telop"]
 ```
 
 ## Contributing
