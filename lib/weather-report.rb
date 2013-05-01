@@ -5,6 +5,8 @@ require 'nokogiri'
 require "weather-report/version"
 
 module WeatherReport
+  class WeatherReportError < StandardError; end
+
   class Weather
     attr_reader :today, :tomorrow, :day_after_tomorrow
 
@@ -15,6 +17,8 @@ module WeatherReport
     def self.request_cityid(city)
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
       doc.search("//city[@title='#{city}']").attr("id").value
+    rescue
+      raise WeatherReportError
     end
 
     def today
@@ -41,6 +45,8 @@ module WeatherReport
 
     def read
       @response ||= JSON.parse(@uri.read)
+    rescue
+      raise WeatherReportError
     end
   end
 end

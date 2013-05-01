@@ -48,5 +48,8 @@ class TestWeatherReport < MiniTest::Unit::TestCase
     assert_respond_to Weather, :request_cityid
     assert_equal "130010", Weather.request_cityid("東京")
     assert_equal "140010", Weather.request_cityid("横浜")
+    assert_raises(WeatherReportError) do
+      Weather.request_cityid(nil)
+    end
   end
 end
