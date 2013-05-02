@@ -49,4 +49,8 @@ module WeatherReport
       raise WeatherReportError
     end
   end
+
+  class Day
+    
+  end
 end
