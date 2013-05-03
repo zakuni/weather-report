@@ -16,30 +16,26 @@ module WeatherReport
     end
 
     def today
-      @today ||= forecast("今日")
+      @today ||= Day.new(forecasts, "今日")
     end
     
     def tomorrow
-      @tomorrow ||= forecast("明日")
+      @tomorrow ||= Day.new(forecasts, "明日")
     end
 
     def day_after_tomorrow
-      @day_after_tomorrow ||= forecast("明後日")
+      @day_after_tomorrow ||= Day.new(forecasts, "明後日")
     end
 
     private
 
-    def forecast(dateLabel)
-      forecasts.each {|elem| return elem if elem["dateLabel"] == dateLabel}
-    end
-    
     def forecasts
-      @forecasts ||= read["forecasts"]
+      @forecasts ||= read
     end
 
     def read
       @response ||= JSON.parse(@uri.read)
-    rescue
+    rescue e
       raise WeatherReportError
     end
   end

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'date'
 require 'json'
 require 'open-uri'
 require 'nokogiri'
