@@ -12,7 +12,8 @@ module WeatherReport
     def self.request_cityid(city)
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
       doc.search("//city[@title='#{city}']").attr("id").value
-    rescue
+    rescue => e
+      puts e
       raise WeatherReportError
     end
 
@@ -39,7 +40,8 @@ module WeatherReport
 
     def read
       @response ||= JSON.parse(@uri.read)
-    rescue e
+    rescue => e
+      puts e
       raise WeatherReportError
     end
   end
