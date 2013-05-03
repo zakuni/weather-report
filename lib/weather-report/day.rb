@@ -8,21 +8,27 @@ module WeatherReport
       @forecast = forecast(forecasts, dateLabel)
     end
 
+    # @return [Date] the date
     def date
       year, month, day = @forecast["date"].split('-')
       @date ||= Date.new(year.to_i, month.to_i, day.to_i)
     end
 
+    # @return [String] the telop
     def telop
       @telop ||= @forecast["telop"]
     end
 
+    # @return [Fixnum] the minimum temperature. 
+    # Temperature of today could be nil.
     def temperature_min
       min = @forecast["temperature"]["min"]
       @temperature ||= 
         min ? min["celsius"].to_i : nil
     end
 
+    # @return [Fixnum] the maximum temperature. 
+    # Temperature of today could be nil.
     def temperature_max
       max = @forecast["temperature"]["max"]
       @temperature_max ||= 
