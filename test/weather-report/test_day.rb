@@ -16,6 +16,10 @@ class TestDay < MiniTest::Unit::TestCase
     assert_instance_of Day, Day.new(@forecasts, "明日")
   end
 
+  def test_umbrella?
+    assert_respond_to @day, :umbrella?
+  end
+  
   def test_date
     assert_respond_to @day, :date
     assert_instance_of Date, @day.date
@@ -37,6 +41,5 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_to_h
     assert_respond_to @day, :to_h
-    puts @day.to_h
   end
 end

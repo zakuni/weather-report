@@ -49,6 +49,5 @@ class TestWeather < MiniTest::Unit::TestCase
 
   def test_to_h
     assert_respond_to @weather, :to_h
-    puts @weather.to_h
   end
 end

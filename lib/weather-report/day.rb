@@ -8,6 +8,11 @@ module WeatherReport
       @forecast = forecast(forecasts, dateLabel)
     end
 
+    # @return [Trueclass, Falseclass] return true if it will be rainy or snowy or sleety or hailstorm
+    def umbrella?
+      telop =~ /[雨雪霙雹]/ ? true : false
+    end
+
     # @return [Date] the date
     def date
       year, month, day = @forecast["date"].split('-')
