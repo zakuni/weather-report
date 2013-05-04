@@ -35,6 +35,15 @@ module WeatherReport
         max ? max["celsius"].to_i : nil
     end
 
+    def to_h
+      {
+        "date" => date.to_s,
+        "telop" => telop,
+        "temperature_min" => temperature_min,
+        "temperature_max" => temperature_max
+      }
+    end
+
     private
 
     def forecast(forecasts, dateLabel)

@@ -13,7 +13,6 @@ module WeatherReport
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
       doc.search("//city[@title='#{city}']").attr("id").value
     rescue => e
-      puts e
       raise WeatherReportError
     end
 
@@ -32,6 +31,14 @@ module WeatherReport
       @day_after_tomorrow ||= Day.new(forecasts, "明後日")
     end
 
+    def to_h
+      {
+        "today" => today.to_h,
+        "tomorrow" => tomorrow.to_h,
+        "day_after_tomorrow" => day_after_tomorrow.to_h
+      }
+    end
+
     private
 
     def forecasts
@@ -41,7 +48,6 @@ module WeatherReport
     def read
       @response ||= JSON.parse(@uri.read)
     rescue => e
-      puts e
       raise WeatherReportError
     end
   end

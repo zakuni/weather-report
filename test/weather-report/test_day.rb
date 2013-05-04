@@ -34,4 +34,9 @@ class TestDay < MiniTest::Unit::TestCase
     assert_respond_to @day, :temperature_max
     assert_instance_of Fixnum, @day.temperature_max
   end
+
+  def test_to_h
+    assert_respond_to @day, :to_h
+    puts @day.to_h
+  end
 end
