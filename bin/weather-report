@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'weather-report'
+
+weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(ARGV[0]))
+puts weather.to_h
