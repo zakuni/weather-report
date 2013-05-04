@@ -9,9 +9,9 @@ module WeatherReport
     end
 
     # @return [String] the id of given city
-    def self.request_cityid(city)
+    def self.request_cityid(city_name)
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
-      doc.search("//city[@title='#{city}']").attr("id").value
+      doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue => e
       raise WeatherReportError
     end
