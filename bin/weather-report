@@ -1,6 +1,30 @@
 #!/usr/bin/env ruby
 
 require 'weather-report'
+require 'optparse'
+require 'ostruct'
 
-weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(ARGV[0]))
+exit 1 if ARGV.empty?
+
+options = OpenStruct.new
+
+opt_parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: weather-report CITY [options]'
+
+  opts.separator ""
+  opts.separator "Common options:"
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts WeatherReport::Version
+    exit
+  end
+end
+
+city = opt_parser.parse(ARGV)
+weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(city))
 puts weather.to_h
