@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-require 'test_helper'
+require File.expand_path 'test_helper', File.dirname(__FILE__)
 
 class TestDay < MiniTest::Unit::TestCase
   include WeatherReport
@@ -14,6 +14,14 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_initialize
     assert_instance_of Day, Day.new(@forecasts, "明日")
+  end
+
+  def test_rain?
+    assert_respond_to @day, :rain?
+  end
+
+  def test_snow?
+    assert_respond_to @day, :snow?
   end
 
   def test_umbrella?

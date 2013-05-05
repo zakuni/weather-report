@@ -6,9 +6,19 @@ module WeatherReport
 
     def initialize(forecasts, dateLabel)
       @forecast = forecast(forecasts, dateLabel)
+    end    
+
+    # @return [Trueclass, Falseclass] return true if it rains.
+    def rain?
+      telop =~ /[雨]/ ? true : false
     end
 
-    # @return [Trueclass, Falseclass] return true if it will be rainy or snowy or sleety or hailstorm
+    # @return [Trueclass, Falseclass] return true if it snows.
+    def snow?
+      telop =~ /[雪]/ ? true : false
+    end
+
+    # @return [Boolean] return true if it will be rainy or snowy or sleety or hailstorm
     def umbrella?
       telop =~ /[雨雪霙雹]/ ? true : false
     end
@@ -40,6 +50,7 @@ module WeatherReport
         max ? max["celsius"].to_i : nil
     end
 
+    # @return [Hash] return with hash format.
     def to_h
       {
         "date" => date.to_s,
