@@ -2,6 +2,8 @@
 
 A Ruby library and CLI to get Japanese Weather via Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).
 
+[![Build Status](https://travis-ci.org/zakuni/weather-report.png)](https://travis-ci.org/zakuni/weather-report)
+
 ## Installation
 
 Add this line to your application's Gemfile:
