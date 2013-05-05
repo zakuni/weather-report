@@ -21,6 +21,11 @@ Or install it yourself as:
 ```ruby
 require 'weather-report'
 
+# for easy use
+tokyo = WeatherReport.get("東京")
+tokyo.today.telop  # => "晴れ"
+
+# or you can write like this
 id = WeatherReport::Weather.request_cityid("東京")
 weather = WeatherReport::Weather.new(id)
 weather.tomorrow.date  # => <Date: 2013-05-04 ((2456417j,0s,0n),+0s,2299161j)>
