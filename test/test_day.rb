@@ -39,12 +39,12 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_temperature_min
     assert_respond_to @day, :temperature_min
-    assert_instance_of Fixnum, @day.temperature_min
+    assert [Fixnum, NilClass].include? @day.temperature_min.class
   end
 
   def test_temperature_max
     assert_respond_to @day, :temperature_max
-    assert_instance_of Fixnum, @day.temperature_max
+    assert [Fixnum, NilClass].include? @day.temperature_max.class
   end
 
   def test_to_h
