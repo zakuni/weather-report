@@ -35,6 +35,7 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_telop
     assert_respond_to @day, :telop
+    assert_instance_of String, @day.telop
   end
 
   def test_temperature_min
