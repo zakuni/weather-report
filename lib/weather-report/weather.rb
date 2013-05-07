@@ -37,11 +37,13 @@ module WeatherReport
       @response["link"]
     end
 
+    # @return [Hash] the weather with Hash format
     def to_h
       {
         "today" => today.to_h,
         "tomorrow" => tomorrow.to_h,
-        "day_after_tomorrow" => day_after_tomorrow.to_h
+        "day_after_tomorrow" => day_after_tomorrow.to_h,
+        "link" => link
       }
     end
 
