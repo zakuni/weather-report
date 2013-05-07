@@ -38,6 +38,11 @@ class TestWeather < MiniTest::Unit::TestCase
     assert_instance_of Day, day_after_tomorrow
   end
 
+  def test_link
+    assert_respond_to @weather, :link
+    assert_instance_of String, @weather.link
+  end
+
   def test_request_cityid
     assert_respond_to Weather, :request_cityid
     assert_equal "130010", Weather.request_cityid("東京")

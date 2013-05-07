@@ -31,6 +31,12 @@ module WeatherReport
       @day_after_tomorrow ||= Day.new(forecasts, "明後日")
     end
 
+    # @return [String] the URL of the requested livedoor weather
+    def link
+      @response ||= read
+      @response["link"]
+    end
+
     def to_h
       {
         "today" => today.to_h,
