@@ -34,6 +34,7 @@ weather.tomorrow.date  # => <Date: 2013-05-04 ((2456417j,0s,0n),+0s,2299161j)>
 weather.tomorrow.telop  # => "雨"
 weather.tomorrow.temperature_min  # => 12
 ```
+for more info, see http://rubydoc.info/gems/weather-report
 
 ## Contributing
 
