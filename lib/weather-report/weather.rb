@@ -10,10 +10,27 @@ module WeatherReport
 
     # @return [String] the id of given city
     def self.request_cityid(city_name)
-      doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"))
+      @proxy = Weather.parse_proxy([ENV["http_proxy"])
+      doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"), :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass])
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue => e
       raise WeatherReportError
+    end
+
+    def self.parse_proxy(proxy)
+      # http://user:pass@host:port のように書かれていることを想定
+      # パスワードに@とか入ってる場合があるので一番後ろの@でだけsplitする
+      rserver, raccount = (proxy || '').sub(/http:\/\//, '').reverse.split("@", 2)
+      server  = rserver.nil? ? "" : rserver.reverse
+      host, port = server.split(":")
+      account = raccount.nil? ? "" : raccount.reverse.split(":")
+      user, pass = account
+      
+      proxy = OpenStruct.new({      
+                               "server" => server.empty? ? nil : "http://#{server}",
+                               "user"   => user.nil? ? "" : user,
+                               "pass"   => pass.nil? ? "" : pass
+                             })
     end
 
     # @return [Day] the today
