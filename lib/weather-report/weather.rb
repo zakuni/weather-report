@@ -10,7 +10,7 @@ module WeatherReport
 
     # @return [String] the id of given city
     def self.request_cityid(city_name)
-      @proxy = Weather.parse_proxy([ENV["http_proxy"])
+      @proxy = Weather.parse_proxy(ENV["http_proxy"])
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml"), :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass])
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue => e
