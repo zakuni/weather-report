@@ -8,12 +8,12 @@ module WeatherReport
       @forecast = forecast(forecasts, dateLabel)
     end    
 
-    # @return [Trueclass, Falseclass] return true if it rains.
+    # @return [Boolean] return true if it rains.
     def rain?
       telop =~ /[雨]/ ? true : false
     end
 
-    # @return [Trueclass, Falseclass] return true if it snows.
+    # @return [Boolean] return true if it snows.
     def snow?
       telop =~ /[雪]/ ? true : false
     end
