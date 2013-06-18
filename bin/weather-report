@@ -26,5 +26,5 @@ opt_parser = OptionParser.new do |opts|
 end
 
 city = opt_parser.parse(ARGV)
-weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(city))
+weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(*city))
 puts weather.to_h
