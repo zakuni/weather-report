@@ -14,8 +14,7 @@ module WeatherReport
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue NoMethodError
-      puts "It seems like city #{city_name} does not exist.\nPlease look at http://weather.livedoor.com/forecast/rss/primary_area.xml for city list."
-      exit 1
+      raise WeatherReportError, "It seems like city #{city_name} does not exist.\nPlease look at http://weather.livedoor.com/forecast/rss/primary_area.xml for city list."
     rescue => e
       raise WeatherReportError
     end
