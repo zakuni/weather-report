@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 
 module WeatherReport
+  def self.cities
+    proxy = Weather.parse_proxy(ENV["http_proxy"])
+    doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
+    doc.xpath("//city").map{|i|
+      i["title"]
+    }
+  end
+
   class Weather
     attr_reader :today, :tomorrow, :day_after_tomorrow
 
