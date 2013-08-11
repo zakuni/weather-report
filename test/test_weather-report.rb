@@ -8,4 +8,11 @@ class TestWeatherReport < MiniTest::Unit::TestCase
     assert_respond_to WeatherReport, :get
     assert_instance_of WeatherReport::Weather, WeatherReport.get("横浜")
   end
+
+  def test_cities
+    cities = WeatherReport.cities
+    assert_instance_of Array, cities
+    assert cities.include? "東京"
+    assert cities.include? "横浜"
+  end
 end
