@@ -14,7 +14,7 @@ opt_parser = OptionParser.new do |opts|
   opts.separator ""
   opts.separator "Common options:"
 
-  opts.on_tail("-list", "Show city list") do
+  opts.on_tail("-l", "--list", "Show city list") do
     WeatherReport.cities.each do |city|
       puts city
     end
