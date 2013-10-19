@@ -51,4 +51,9 @@ class TestDay < MiniTest::Unit::TestCase
   def test_to_h
     assert_respond_to @day, :to_h
   end
+
+  def test_send
+    forecasts = {"forecasts" => [{"dateLabel" => "明日"}]}
+    refute_nil @day.send(:forecast, forecasts, "明日")
+  end
 end
