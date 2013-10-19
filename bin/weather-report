@@ -41,9 +41,13 @@ city = opt_parser.parse(ARGV)
 weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(*city))
 
 [weather.today, weather.tomorrow, weather.day_after_tomorrow].each do |day|
-  print "#{day.date.year}年#{day.date.month}月#{day.date.day}日の天気 #{day.telop}"
-  print " 最低気温#{day.temperature_min}度" if day.temperature_min
-  print " 最高気温#{day.temperature_max}度" if day.temperature_max
-  puts
+  begin
+    print "#{day.date.year}年#{day.date.month}月#{day.date.day}日の天気 #{day.telop}"
+    print " 最低気温#{day.temperature_min}度" if day.temperature_min
+    print " 最高気温#{day.temperature_max}度" if day.temperature_max
+    puts
+  rescue NoMethodError
+    next
+  end
 end
 puts weather.link
