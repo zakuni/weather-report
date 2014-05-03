@@ -3,41 +3,37 @@
 require 'rubygems'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'weather-report'
-require 'optparse'
-require 'ostruct'
+require 'slop'
 
-options = OpenStruct.new
+opts = Slop.parse(help: true) do
+  banner 'Usage: weather-report CITY [options]'
 
-opt_parser = OptionParser.new do |opts|
-  opts.banner = 'Usage: weather-report CITY [options]'
+  separator ""
+  separator "Common options:"
 
-  opts.separator ""
-  opts.separator "Common options:"
-
-  opts.on_tail("-l", "--list", "Show city list") do
+  on :l, :list, 'Show city list' do
     WeatherReport.cities.each do |city|
       puts city
     end
     exit
   end
 
-  opts.on_tail("-h", "--help", "Show this message") do
-    puts opts
-    exit
-  end
-
-  opts.on_tail("-v", "--version", "Show version") do
+  on :v, :version, "Show version" do
     puts "weather-report v#{WeatherReport::VERSION}"
     exit
   end
 end
 
 if ARGV.empty?
-  puts opt_parser.help
-  exit 1
+  if opts.help?
+    exit
+  else
+    puts opts.help
+    exit
+  end
 end
 
-city = opt_parser.parse(ARGV)
+city = ARGV
 weather = WeatherReport::Weather.new(WeatherReport::Weather.request_cityid(*city))
 
 [weather.today, weather.tomorrow, weather.day_after_tomorrow].each do |day|
