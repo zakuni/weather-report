@@ -24,13 +24,11 @@ opts = Slop.parse(help: true) do
   end
 end
 
+exit if opts.help?
+
 if ARGV.empty?
-  if opts.help?
-    exit
-  else
-    puts opts.help
-    exit
-  end
+  puts opts.help
+  exit
 end
 
 city = ARGV
