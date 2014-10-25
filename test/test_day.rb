@@ -18,16 +18,46 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_rain?
     assert_respond_to @day, :rain?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.rain?, false
+    end
+    @day.stub(:telop, '雨') do
+      assert_equal @day.rain?, true
+    end
+    @day.stub(:telop, '晴れ時々雨') do
+      assert_equal @day.rain?, true
+    end
   end
 
   def test_snow?
     assert_respond_to @day, :snow?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.snow?, false
+    end
+    @day.stub(:telop, '雪') do
+      assert_equal @day.snow?, true
+    end
+    @day.stub(:telop, '雪のち晴れ') do
+      assert_equal @day.snow?, true
+    end
   end
 
   def test_umbrella?
     assert_respond_to @day, :umbrella?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.umbrella?, false
+    end
+    @day.stub(:telop, '雨') do
+      assert_equal @day.umbrella?, true
+    end
+    @day.stub(:telop, '晴れのち雨') do
+      assert_equal @day.umbrella?, true
+    end
+    @day.stub(:telop, '曇りのち晴れ') do
+      assert_equal @day.umbrella?, false
+    end
   end
-  
+
   def test_date
     assert_respond_to @day, :date
     assert_instance_of Date, @day.date
@@ -52,7 +82,7 @@ class TestDay < MiniTest::Unit::TestCase
     assert_respond_to @day, :to_h
   end
 
-  def test_send
+  def test_forecast
     forecasts = {"forecasts" => [{"dateLabel" => "明日"}]}
     refute_nil @day.send(:forecast, forecasts, "明日")
     assert_nil @day.send(:forecast, forecasts, "明後日")
