@@ -27,7 +27,7 @@ class TestDay < MiniTest::Unit::TestCase
   def test_umbrella?
     assert_respond_to @day, :umbrella?
   end
-  
+
   def test_date
     assert_respond_to @day, :date
     assert_instance_of Date, @day.date
@@ -52,7 +52,7 @@ class TestDay < MiniTest::Unit::TestCase
     assert_respond_to @day, :to_h
   end
 
-  def test_send
+  def test_forecast
     forecasts = {"forecasts" => [{"dateLabel" => "明日"}]}
     refute_nil @day.send(:forecast, forecasts, "明日")
     assert_nil @day.send(:forecast, forecasts, "明後日")
