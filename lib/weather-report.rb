@@ -9,6 +9,7 @@ require 'weather-report/version'
 
 module WeatherReport
   class Error < StandardError; end
+  class ArgumentError < Error; end
   class NoCityError < Error; end
   class NoForecastError < Error; end
 

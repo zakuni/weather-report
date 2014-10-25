@@ -11,7 +11,7 @@ class TestWeather < MiniTest::Unit::TestCase
   end
 
   def test_initialize
-    assert_raises ArgumentError do
+    assert_raises ::ArgumentError do
       Weather.new
     end
     assert_instance_of Weather, Weather.new(@id)

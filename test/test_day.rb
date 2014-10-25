@@ -14,6 +14,9 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_initialize
     assert_instance_of Day, Day.new(@forecasts, "明日")
+    assert_raises(ArgumentError) do
+      Day.new(@forecasts, "昨日")
+    end
   end
 
   def test_rain?

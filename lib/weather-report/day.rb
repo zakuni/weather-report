@@ -5,8 +5,9 @@ module WeatherReport
     attr_reader :date, :telop, :temperature_min, :temperature_max
 
     def initialize(forecasts, dateLabel)
+      raise ArgumentError, "dateLabel must be 今日, 明日 or 明後日" unless dateLabel =~ /(今日|明日|明後日)/
       @forecast = forecast(forecasts, dateLabel)
-    end    
+    end
 
     # @return [Boolean] return true if it rains.
     def rain?
@@ -34,19 +35,19 @@ module WeatherReport
       @telop ||= @forecast["telop"]
     end
 
-    # @return [Fixnum] the minimum temperature. 
+    # @return [Fixnum] the minimum temperature.
     # Temperature of today could be nil.
     def temperature_min
       min = @forecast["temperature"]["min"]
-      @temperature ||= 
+      @temperature ||=
         min ? min["celsius"].to_i : nil
     end
 
-    # @return [Fixnum] the maximum temperature. 
+    # @return [Fixnum] the maximum temperature.
     # Temperature of today could be nil.
     def temperature_max
       max = @forecast["temperature"]["max"]
-      @temperature_max ||= 
+      @temperature_max ||=
         max ? max["celsius"].to_i : nil
     end
 
