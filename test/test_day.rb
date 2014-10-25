@@ -26,6 +26,18 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_umbrella?
     assert_respond_to @day, :umbrella?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.umbrella?, false
+    end
+    @day.stub(:telop, '雨') do
+      assert_equal @day.umbrella?, true
+    end
+    @day.stub(:telop, '晴れのち雨') do
+      assert_equal @day.umbrella?, true
+    end
+    @day.stub(:telop, '曇りのち晴れ') do
+      assert_equal @day.umbrella?, false
+    end
   end
 
   def test_date
