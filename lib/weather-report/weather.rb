@@ -15,7 +15,7 @@ module WeatherReport
       doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue NoMethodError
-      raise WeatherReportError, "It seems like city #{city_name} does not exist.\nPlease look at http://weather.livedoor.com/forecast/rss/primary_area.xml for city list."
+      raise NoCityError, "It seems like city #{city_name} does not exist.\nPlease look at http://weather.livedoor.com/forecast/rss/primary_area.xml for city list."
     end
 
     def self.parse_proxy(proxy)
@@ -26,8 +26,8 @@ module WeatherReport
       host, port = server.split(":")
       account = raccount.nil? ? "" : raccount.reverse.split(":")
       user, pass = account
-      
-      proxy = OpenStruct.new({      
+
+      proxy = OpenStruct.new({
                                "server" => server.empty? ? nil : "http://#{server}",
                                "user"   => user.nil? ? "" : user,
                                "pass"   => pass.nil? ? "" : pass
@@ -74,7 +74,7 @@ module WeatherReport
     def read
       @response ||= JSON.parse(@uri.read)
     rescue => e
-      raise WeatherReportError
+      raise Error
     end
   end
 end

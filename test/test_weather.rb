@@ -50,6 +50,9 @@ class TestWeather < MiniTest::Unit::TestCase
     assert_raises(ArgumentError) do
       Weather.request_cityid(nil)
     end
+    assert_raises(NoCityError) do
+      Weather.request_cityid("存在しない街")
+    end
   end
 
   def test_to_h
