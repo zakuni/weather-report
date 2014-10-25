@@ -18,10 +18,28 @@ class TestDay < MiniTest::Unit::TestCase
 
   def test_rain?
     assert_respond_to @day, :rain?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.rain?, false
+    end
+    @day.stub(:telop, '雨') do
+      assert_equal @day.rain?, true
+    end
+    @day.stub(:telop, '晴れ時々雨') do
+      assert_equal @day.rain?, true
+    end
   end
 
   def test_snow?
     assert_respond_to @day, :snow?
+    @day.stub(:telop, '晴れ') do
+      assert_equal @day.snow?, false
+    end
+    @day.stub(:telop, '雪') do
+      assert_equal @day.snow?, true
+    end
+    @day.stub(:telop, '雪のち晴れ') do
+      assert_equal @day.snow?, true
+    end
   end
 
   def test_umbrella?
