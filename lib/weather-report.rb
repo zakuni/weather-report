@@ -8,7 +8,10 @@ require 'weather-report/day'
 require 'weather-report/version'
 
 module WeatherReport
-  class WeatherReportError < StandardError; end
+  class Error < StandardError; end
+  class ArgumentError < Error; end
+  class NoCityError < Error; end
+  class NoForecastError < Error; end
 
   # @return [Weather] get weather of the city
   def self.get(city_name)

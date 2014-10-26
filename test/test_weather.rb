@@ -11,7 +11,7 @@ class TestWeather < MiniTest::Unit::TestCase
   end
 
   def test_initialize
-    assert_raises ArgumentError do
+    assert_raises ::ArgumentError do
       Weather.new
     end
     assert_instance_of Weather, Weather.new(@id)
@@ -49,6 +49,9 @@ class TestWeather < MiniTest::Unit::TestCase
     assert_equal "140010", Weather.request_cityid("横浜")
     assert_raises(ArgumentError) do
       Weather.request_cityid(nil)
+    end
+    assert_raises(NoCityError) do
+      Weather.request_cityid("存在しない街")
     end
   end
 
