@@ -65,7 +65,7 @@ module WeatherReport
 
     def forecast(forecasts, dateLabel)
       forecasts["forecasts"].each {|elem| return elem if elem["dateLabel"] == dateLabel}
-      return nil
+      raise NoForecastError
     end
   end
 end
