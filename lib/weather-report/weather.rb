@@ -5,17 +5,17 @@ module WeatherReport
     attr_reader :today, :tomorrow, :day_after_tomorrow
 
     def initialize(city_id)
-      @uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{city_id}")
+      @uri = URI.parse("https://weather.tsukumijima.net/api/forecast?city=#{city_id}")
     end
 
     # @return [String] the id of given city
     def self.request_cityid(city_name)
       raise ArgumentError, "City name must be String." unless city_name.kind_of?(String)
       proxy = Weather.parse_proxy(ENV["http_proxy"])
-      doc = Nokogiri::XML(open("http://weather.livedoor.com/forecast/rss/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
+      doc = Nokogiri::XML(open("https://weather.tsukumijima.net/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue NoMethodError
-      raise NoCityError, "It seems like city #{city_name} does not exist.\nPlease look at http://weather.livedoor.com/forecast/rss/primary_area.xml for city list."
+      raise NoCityError, "It seems like city #{city_name} does not exist.\nPlease look at https://weather.tsukumijima.net/primary_area.xml for city list."
     end
 
     def self.parse_proxy(proxy)

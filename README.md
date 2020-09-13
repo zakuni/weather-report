@@ -1,6 +1,6 @@
 # Weather Report
 
-A Ruby library and CLI to get Japanese Weather via Livedoor Weather Web Service(http://weather.livedoor.com/weather_hacks/webservice).
+A Ruby library and CLI to get Japanese Weather via 天気予報 API(https://weather.tsukumijima.net/) which is compatible with Livedoor Weather Web Service.
 
 [![Build Status](https://travis-ci.org/zakuni/weather-report.png)](https://travis-ci.org/zakuni/weather-report)
 

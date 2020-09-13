@@ -7,7 +7,7 @@ class TestDay < MiniTest::Unit::TestCase
 
   def setup
     city_id = Weather.request_cityid("東京")
-    uri = URI.parse("http://weather.livedoor.com/forecast/webservice/json/v1?city=#{city_id}")
+    uri = URI.parse("https://weather.tsukumijima.net/api/forecast?city=#{city_id}")
     @forecasts = JSON.parse(uri.read)
     @day = Day.new(@forecasts, "明日")
   end
