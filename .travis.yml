@@ -1,9 +1,12 @@
 language: ruby
 cache: bundler
 rvm:
-  - "2.5"
-  - "2.6"
-  - "2.7"
-  # - jruby
-  # - rbx-3
+- '2.5'
+- '2.6'
+- '2.7'
+# - jruby
+# - rbx-3
 before_install: gem install bundler -v 2.1.4
+notifications:
+  slack:
+    secure: V4ek++4NqkVvL44PrDrycKUdIVIGUM5lkBydkyNl1CU8+wf2l/GzeMnI/d8rF+ok8DgWTvEoEr15+/d9tzec34M91GbVnHI5+MeOWuZcp7LDVvKMZc67kZcHqplurBFcKuTty8AJgGmLOjUqmlrXoXSceTachaqdU/0u1MQV2Sg=
