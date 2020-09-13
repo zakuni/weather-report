@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
-require 'rubygems'
-$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+
+require 'bundler/setup'
 require 'weather-report'
 require 'slop'
 

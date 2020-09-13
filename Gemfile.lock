@@ -3,7 +3,7 @@ PATH
   specs:
     weather-report (0.4.0)
       nokogiri
-      slop (~> 4.0.0)
+      slop (~> 3.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -27,7 +27,7 @@ GEM
     rake (13.0.1)
     rb-fsevent (0.10.4)
     ruby-progressbar (1.10.1)
-    slop (4.0.0)
+    slop (3.6.0)
 
 PLATFORMS
   ruby
