@@ -2,8 +2,6 @@ PATH
   remote: .
   specs:
     weather-report (0.4.1)
-      nokogiri
-      slop (~> 3.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -36,8 +34,10 @@ DEPENDENCIES
   growl
   guard-minitest
   minitest-reporters
+  nokogiri
   rake
   rb-fsevent
+  slop (~> 3.6.0)
   weather-report!
 
 BUNDLED WITH
