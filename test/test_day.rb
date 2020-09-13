@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 require File.expand_path 'test_helper', File.dirname(__FILE__)
 
-class TestDay < MiniTest::Unit::TestCase
+class TestDay < MiniTest::Test
   include WeatherReport
 
   def setup
