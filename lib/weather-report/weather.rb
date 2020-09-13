@@ -12,7 +12,7 @@ module WeatherReport
     def self.request_cityid(city_name)
       raise ArgumentError, "City name must be String." unless city_name.kind_of?(String)
       proxy = Weather.parse_proxy(ENV["http_proxy"])
-      doc = Nokogiri::XML(open("https://weather.tsukumijima.net/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
+      doc = Nokogiri::XML(URI.open("https://weather.tsukumijima.net/primary_area.xml", :proxy_http_basic_authentication => [proxy.server, proxy.user, proxy.pass]))
       doc.search("//city[@title='#{city_name}']").attr("id").value
     rescue NoMethodError
       raise NoCityError, "It seems like city #{city_name} does not exist.\nPlease look at https://weather.tsukumijima.net/primary_area.xml for city list."
