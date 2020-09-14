@@ -12,5 +12,4 @@ group :development do
   gem "guard-minitest"
   gem "rb-fsevent"
   gem "minitest-reporters"
-  gem "growl"
 end
