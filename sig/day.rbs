@@ -1,0 +1,8 @@
+module WeatherReport
+  class Day
+    attr_reader date: Date
+    attr_reader telop: String
+    attr_reader temperature_min: Integer?
+    attr_reader temperature_max: Integer?
+  end
+end
