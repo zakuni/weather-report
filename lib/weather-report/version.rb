@@ -1,3 +1,3 @@
 module WeatherReport
-  VERSION = '0.4.2'.freeze
+  VERSION = '0.4.1'.freeze
 end
